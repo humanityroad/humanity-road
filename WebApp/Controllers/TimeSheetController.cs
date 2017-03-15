@@ -2,10 +2,13 @@
 {
     using System;
     using System.Data;
+    using System.Data.Entity;
     using System.Linq;
     using System.Security.Claims;
     using System.Web.Http;
     using System.Web.Http.Description;
+    using System.Data.Entity.Infrastructure;
+    using System.Net;
     using WebApp;
     using DAL;
     using Utilities;
@@ -37,40 +40,41 @@
         //    return Ok(timeSheet);
         //}
 
-        //// PUT: api/TimeSheet/5
-        //[ResponseType(typeof(void))]
-        //public IHttpActionResult PutTimeSheet(Guid id, TimeSheet timeSheet)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        ////PUT: api/TimeSheet/5
+        [ResponseType(typeof(void))]
+        [HttpPut]
+        public IHttpActionResult PutTimeSheet(TimeSheet timesheet)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+           TimeSheet tm = db.TimeSheets.FirstOrDefault(t=>t.Id==timesheet.Id);
+            
+            if (tm!=null)
+            {
+                tm.IsActive = false;
+                db.Entry(tm).State = EntityState.Modified;
+            }
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TimeSheetExists(timesheet.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-        //    if (id != timeSheet.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    db.Entry(timeSheet).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!TimeSheetExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
+            return StatusCode(HttpStatusCode.NoContent) ;
+        }
 
         // POST: api/TimeSheet
         [ResponseType(typeof(TimeSheet))]
@@ -85,9 +89,11 @@
             var id = ClaimsPrincipal.Current.GetUserProperty(IdentityHelpers.PERSON_ID_K);
             timeSheet.volunteerId = id;
 
+            if (timeSheet != null)
+            { 
             db.TimeSheets.Add(timeSheet);
             db.SaveChanges();
-
+            }
             return CreatedAtRoute("DefaultApi", new { id = timeSheet.Id }, timeSheet);
         }
 

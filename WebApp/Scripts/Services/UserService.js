@@ -63,6 +63,29 @@ angular.module('frontEndApp')
             return deferred.promise;
         };
 
+        self.updateTimeSheet = function (timesheet) {
+          //debugger;
+            $log.log('entered UserService.updateTimeSheet');
+            $log.log('Timesheet GUID:',timesheet);
+
+            var deferred = $q.defer();
+            
+            $http({
+                method: 'PUT',
+                url: timesheetEndpoint,
+                data: timesheet
+            }).then(function (data) {
+                //debugger;                
+                deferred.resolve(data);
+            }, function (msg, code) {
+               // debugger;
+                deferred.reject(msg);
+                $log.error('error in UserService.updateTimeSheet ', msg, code);
+            });
+
+            return deferred.promise;
+        };
+
         self.getTimesheets = function () {
             $log.log('entered UserService.getTimesheets');
 
