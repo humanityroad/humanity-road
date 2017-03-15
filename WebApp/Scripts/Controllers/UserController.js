@@ -24,6 +24,10 @@ angular.module('frontEndApp')
       self.timesheet = {};
       self.showSpinner = true;
 
+      self.timesheet.actions = ["Disaster Response", "Disaster Preparedness", "Tools Testing", "Fund Raising", "Training", "Other"];
+      self.timesheet.eventtypes = ["Avalanche", "Disease", "Drought", "Earthquake", "Fire", "Flood", "Hurricane/Cyclone", "Manmade/Hazmat", "Public Safety", "Rockslide/Landslide", "Severe Weather", "Tornado", "Tsunami", "Volcano", "Winter Storm", "Others"];
+      self.timesheet.IsActive = "true";
+      
       // function declarations
       self.saveUserInfo = function () {
           UserService.saveUserDetails(self.user).then(function (res) {
@@ -32,7 +36,7 @@ angular.module('frontEndApp')
           });
           self.showSpinner = true;
       }
-
+          
       self.toggleNav = function() {
           $mdSidenav('left').toggle();
       }
@@ -51,6 +55,7 @@ angular.module('frontEndApp')
           return _.range(1, 31 + 1);
       };
 
+      
       self.languages = ['English', 'Spanish', 'French'];
 
       self.transformChip = function (chip) {
@@ -70,11 +75,28 @@ angular.module('frontEndApp')
 
       self.saveTimesheet = function () {
           UserService.createTimesheet(self.timesheet).then(function () {
+        
               self.getTimesheetHistory();
               self.timesheet = null;
               self.timesheet = {};
           });
+
       }
+     
+      self.updateTimeSheet=function(timesheet)
+      {
+          //debugger;
+          self.upddata = timesheet;
+          UserService.updateTimeSheet(self.upddata).then(function (data) {
+              $log.log('got timesheet list:', data);
+              self.getTimesheetHistory();              
+          });
+      }
+      self.toggleNav = function () {
+          $mdSidenav('left').toggle();
+      }
+
+     
 
       self.getTimesheetHistory = function () {
           UserService.getTimesheets().then(function (data) {
@@ -82,7 +104,7 @@ angular.module('frontEndApp')
               self.timesheetList = data;
           });
       };
-
+     
       // run once for initialization
       UserService.getUserDetails().then(function (data) {
           self.user = data;

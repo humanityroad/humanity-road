@@ -218,6 +218,14 @@
     <Compile Include="Migrations\201606190306038_depricating the offersMatch boolean flag for employer.Designer.cs">
       <DependentUpon>201606190306038_depricating the offersMatch boolean flag for employer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703132328216_AddTimeSheetFields.cs" />
+    <Compile Include="Migrations\201703132328216_AddTimeSheetFields.Designer.cs">
+      <DependentUpon>201703132328216_AddTimeSheetFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703140203207_DateFieldEdit.cs" />
+    <Compile Include="Migrations\201703140203207_DateFieldEdit.Designer.cs">
+      <DependentUpon>201703140203207_DateFieldEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\TimeSheet.cs" />
@@ -280,6 +288,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606190306038_depricating the offersMatch boolean flag for employer.resx">
       <DependentUpon>201606190306038_depricating the offersMatch boolean flag for employer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703132328216_AddTimeSheetFields.resx">
+      <DependentUpon>201703132328216_AddTimeSheetFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703140203207_DateFieldEdit.resx">
+      <DependentUpon>201703140203207_DateFieldEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
