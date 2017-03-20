@@ -73,12 +73,19 @@ angular.module('frontEndApp')
           return query ? self.languages.filter(createFilterFor(query)) : [];
       };
 
-      self.saveTimesheet = function () {
+      self.saveTimesheet = function (frmLogTime) {
+         // debugger;
           UserService.createTimesheet(self.timesheet).then(function () {
         
               self.getTimesheetHistory();
+            
+              frmLogTime.$setUntouched();
+              frmLogTime.$setPristine();
               self.timesheet = null;
               self.timesheet = {};
+              self.timesheet.actions = ["Disaster Response", "Disaster Preparedness", "Tools Testing", "Fund Raising", "Training", "Other"];
+              self.timesheet.eventtypes = ["Avalanche", "Disease", "Drought", "Earthquake", "Fire", "Flood", "Hurricane/Cyclone", "Manmade/Hazmat", "Public Safety", "Rockslide/Landslide", "Severe Weather", "Tornado", "Tsunami", "Volcano", "Winter Storm", "Others"];
+              self.timesheet.IsActive = "true";
           });
 
       }

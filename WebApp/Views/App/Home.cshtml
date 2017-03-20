@@ -4,96 +4,110 @@
 }
 
 <md-content layout-padding flex layout="column">
+    <form name="frmLogTime" ng-submit="uCtrl.saveTimesheet(frmLogTime)">
+        <div flex="nogrow" layout="row">
+            <h4 class="md-display-6">Log your recent activity</h4>
+            <span flex></span>
+            <md-button class="md-raised md-primary" type="submit" ng-disabled="frmLogTime.$invalid">save</md-button>
+        </div>
 
-    <div flex="nogrow" layout="row">
-        <h4 class="md-display-6">Log your recent activity</h4>
-        <span flex></span>
-        <md-button class="md-raised md-primary" ng-click="uCtrl.saveTimesheet()">save</md-button>
-    </div>
+        <div flex="nogrow" layout-gt-xs="row" layout="column" layout-align="space-around start">
+            <md-input-container flex="none">
+                <md-datepicker class="md-block"
+                               ng-model="uCtrl.timesheet.Date"
+                               name="selectLogDate" ng-required="true" md-placeholder="Select Date"></md-datepicker>
+                <div ng-messages="frmLogTime.selectLogDate.$error" ng-show="frmLogTime.selectLogDate.$touched">
+                    <div ng-message="required">Select Log Date</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs="10">
+                <label>hours</label>
+                <input ng-model="uCtrl.timesheet.Hours" type="number" name="hours" ng-required="true" />
+                <div ng-messages="frmLogTime.hours.$error" ng-show="frmLogTime.hours.$touched">
+                    <div ng-message="required">Enter hours spent</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>description</label>
+                <input ng-model="uCtrl.timesheet.Description" autocomplete="off" />
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Select action</label>
+                <md-select ng-model="uCtrl.timesheet.Action" name="selectActions" ng-required="true">
+                    <md-option ng-repeat="action in uCtrl.timesheet.actions" ng-value="action">
+                        {{action}}
+                    </md-option>
+                </md-select>
+                <div ng-messages="frmLogTime.selectActions.$error">
+                    <div ng-message="required">Select Action</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>location</label>
+                <input ng-model="uCtrl.timesheet.ActionNotes" />
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Select event type</label>
+                <md-select ng-model="uCtrl.timesheet.EventType" name="selectEventType" ng-required="true">
+                    <md-option ng-repeat="eventtype in uCtrl.timesheet.eventtypes" ng-value="eventtype">
+                        {{eventtype}}
+                    </md-option>
+                </md-select>
+                <div ng-messages="frmLogTime.selectEventType.$error">
+                    <div ng-message="required">Select event type</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>event name </label>
+                <input ng-model="uCtrl.timesheet.EventTypeNotes" />
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs hidden>
+                <label>approved</label>
+                <input ng-model="uCtrl.timesheet.IsActive" ng-readonly="true" />
+        </div>
 
-    <div flex="nogrow" layout-gt-xs="row" layout="column" layout-align="space-around start">
-        <md-input-container flex="none">
-            <md-datepicker class="md-block"
-                           ng-model="uCtrl.timesheet.Date"
-                           md-placeholder="Select the date"></md-datepicker>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-xs="6">
-            <label>hours</label>
-            <input ng-model="uCtrl.timesheet.Hours" type="number"/>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-xs>
-            <label>description</label>
-            <input ng-model="uCtrl.timesheet.Description"/>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-xs>
-            <label>action</label>
-            <md-select ng-model="uCtrl.timesheet.Action">
-                <md-option ng-repeat="action in uCtrl.timesheet.actions" ng-value="action">
-                    {{action}}
-                </md-option>
-            </md-select>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-xs>
-            <label>action notes</label>
-            <input ng-model="uCtrl.timesheet.ActionNotes" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-xs>
-            <label>event type</label>
-            <md-select ng-model="uCtrl.timesheet.EventType">
-                <md-option ng-repeat="eventtype in uCtrl.timesheet.eventtypes" ng-value="eventtype">
-                    {{eventtype}}
-                </md-option>
-            </md-select>
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-xs>
-            <label>event type notes </label>
-            <input ng-model="uCtrl.timesheet.EventTypeNotes" />
-        </md-input-container>
-        <md-input-container class="md-block" flex-gt-xs hidden>
-            <label>active</label>
-            <input ng-model="uCtrl.timesheet.IsActive" ng-readonly="true"/>
-    </div>
-    
 
-    <md-list flex="nogrow" layout="column">
-        <md-title flex="none" class="md-no-sticky">Timesheet History</md-title>
-         <md-content>
-            <md-list-item flex="nogrow" ng-repeat="timesheet in uCtrl.timesheetList" layout-gt-xs="row" layout="column">
-                <md-input-container class="md-block" flex-gt-xs="nogrow">
-                    <label>Date</label>
-                    <input ng-model="timesheet.Date" disabled>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-xs="6">
-                    <label>Hours</label>
-                    <input ng-model="timesheet.Hours" disabled>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-xs>
-                    <label>Description</label>
-                    <input ng-model="timesheet.Description" disabled>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-xs="nogrow">
-                    <label>Action</label>
-                    <input ng-model="timesheet.Action" disabled>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-xs>
-                    <label>Action Notes</label>
-                    <input ng-model="timesheet.ActionNotes" disabled>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-xs="nogrow">
-                    <label>Event Type</label>
-                    <input ng-model="timesheet.EventType" disabled>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-xs>
-                    <label>Event Type Notes</label>
-                    <input ng-model="timesheet.EventTypeNotes" disabled>
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-xs="nogrow">
-                    <label>Active</label>
-                    <input ng-model="timesheet.IsActive" disabled>
-                </md-input-container>
-                @*<md-button disabled><i class="fa fa-pencil"></i></md-button>*@
-                <md-button ng-click="uCtrl.updateTimeSheet(timesheet);"><i class="fa fa-trash"></i></md-button>
-            </md-list-item>
-        </md-content>
-    </md-list>
+        <md-list flex="nogrow" layout="column">
+            <md-title flex="none" class="md-no-sticky">Timesheet History</md-title>
+            <md-content>
+                <md-list-item flex="nogrow" ng-repeat="timesheet in uCtrl.timesheetList" layout-gt-xs="row" layout="column">
+                    <md-input-container class="md-block" flex-gt-xs="nogrow">
+                        <label>Date</label>
+                        <input ng-model="timesheet.Date" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs="10">
+                        <label>Hours</label>
+                        <input ng-model="timesheet.Hours" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Description</label>
+                        <input ng-model="timesheet.Description" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs="nogrow">
+                        <label>Action</label>
+                        <input ng-model="timesheet.Action" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Location</label>
+                        <input ng-model="timesheet.ActionNotes" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs="nogrow">
+                        <label>Event Type</label>
+                        <input ng-model="timesheet.EventType" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Event Name</label>
+                        <input ng-model="timesheet.EventTypeNotes" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs="nogrow">
+                        <label>Approved</label>
+                        <input ng-model="timesheet.IsActive" disabled>
+                    </md-input-container>
+                    @*<md-button disabled><i class="fa fa-pencil"></i></md-button>*@
+                    <md-button ng-click="uCtrl.updateTimeSheet(timesheet);"><i class="fa fa-trash"></i></md-button>
+                </md-list-item>
+
+            </md-content>
+        </md-list>
+    </form>
 </md-content>
