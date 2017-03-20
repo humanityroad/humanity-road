@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201703140203207_DateFieldEdit.Designer.cs">
       <DependentUpon>201703140203207_DateFieldEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703202125197_AcceptConductTerms.cs" />
+    <Compile Include="Migrations\201703202125197_AcceptConductTerms.Designer.cs">
+      <DependentUpon>201703202125197_AcceptConductTerms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\TimeSheet.cs" />
@@ -294,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703140203207_DateFieldEdit.resx">
       <DependentUpon>201703140203207_DateFieldEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703202125197_AcceptConductTerms.resx">
+      <DependentUpon>201703202125197_AcceptConductTerms.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

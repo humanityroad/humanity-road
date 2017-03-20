@@ -30,6 +30,7 @@ angular.module('frontEndApp')
       
       // function declarations
       self.saveUserInfo = function () {
+          debugger;
           UserService.saveUserDetails(self.user).then(function (res) {
               self.showSpinner = false;
               $window.location.href = '#/Home';
@@ -40,6 +41,14 @@ angular.module('frontEndApp')
       self.toggleNav = function() {
           $mdSidenav('left').toggle();
       }
+      //self.isChecked = function()
+      //{
+      //    if (self.user.AcceptConductTerms != null)
+      //        return self.user.AcceptConductTerms;
+      //    else
+      //        return false;
+          
+      //}
 
       self.hrefHandle = function(href) {
           $mdSidenav('left').close();
@@ -114,6 +123,7 @@ angular.module('frontEndApp')
      
       // run once for initialization
       UserService.getUserDetails().then(function (data) {
+          //debugger;
           self.user = data;
           self.showSpinner = false;
       });
