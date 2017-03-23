@@ -28,6 +28,10 @@
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-xs>
+                <label>event name </label>
+                <input ng-model="uCtrl.timesheet.EventTypeNotes" />
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
                 <label>description</label>
                 <input ng-model="uCtrl.timesheet.Description" autocomplete="off" />
             </md-input-container>
@@ -43,10 +47,6 @@
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-xs>
-                <label>location</label>
-                <input ng-model="uCtrl.timesheet.ActionNotes" />
-            </md-input-container>
-            <md-input-container class="md-block" flex-gt-xs>
                 <label>Select event type</label>
                 <md-select ng-model="uCtrl.timesheet.EventType" name="selectEventType" ng-required="true">
                     <md-option ng-repeat="eventtype in uCtrl.timesheet.eventtypes" ng-value="eventtype">
@@ -58,9 +58,9 @@
                 </div>
             </md-input-container>
             <md-input-container class="md-block" flex-gt-xs>
-                <label>event name </label>
-                <input ng-model="uCtrl.timesheet.EventTypeNotes" />
-            </md-input-container>
+                <label>location</label>
+                <input ng-model="uCtrl.timesheet.ActionNotes" />
+            </md-input-container>       
             <md-input-container class="md-block" flex-gt-xs hidden>
                 <label>approved</label>
                 <input ng-model="uCtrl.timesheet.IsActive" ng-readonly="true" />
@@ -80,6 +80,10 @@
                         <input ng-model="timesheet.Hours" disabled>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-xs>
+                        <label>Event Name</label>
+                        <input ng-model="timesheet.EventTypeNotes" disabled>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-xs>
                         <label>Description</label>
                         <input ng-model="timesheet.Description" disabled>
                     </md-input-container>
@@ -87,17 +91,13 @@
                         <label>Action</label>
                         <input ng-model="timesheet.Action" disabled>
                     </md-input-container>
-                    <md-input-container class="md-block" flex-gt-xs>
-                        <label>Location</label>
-                        <input ng-model="timesheet.ActionNotes" disabled>
-                    </md-input-container>
                     <md-input-container class="md-block" flex-gt-xs="nogrow">
                         <label>Event Type</label>
                         <input ng-model="timesheet.EventType" disabled>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-xs>
-                        <label>Event Name</label>
-                        <input ng-model="timesheet.EventTypeNotes" disabled>
+                        <label>Location</label>
+                        <input ng-model="timesheet.ActionNotes" disabled>
                     </md-input-container>
                     <md-input-container class="md-block" flex-gt-xs="nogrow">
                         <label>Approved</label>
