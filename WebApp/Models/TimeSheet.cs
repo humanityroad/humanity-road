@@ -16,8 +16,7 @@ namespace WebApp
         
         public string Description { get; set; }
         //New Fields
-        public string Action { get; set; }
-        //Renamed Action Notes to Location will be renaming in subsequent release
+        public string Action { get; set; }       
         public string ActionNotes { get; set; }
         public string EventType { get; set; }
         public string EventTypeNotes { get; set; }
