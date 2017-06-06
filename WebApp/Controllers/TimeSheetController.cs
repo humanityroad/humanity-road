@@ -24,7 +24,7 @@
             var id = ClaimsPrincipal.Current.GetUserProperty(IdentityHelpers.PERSON_ID_K);
 
             // return only the timesheets which belong to the currently signed-in user
-            return db.TimeSheets.Where(t => t.volunteerId.Equals(id, StringComparison.InvariantCulture));
+            return db.TimeSheets.Where(t => t.volunteerId.Equals(id, StringComparison.InvariantCulture)).OrderByDescending(t=>t.Date);
         }
 
         //// GET: api/TimeSheet/5
@@ -55,6 +55,7 @@
             if (tm!=null)
             {
                 tm.IsActive = false;
+             
                 db.Entry(tm).State = EntityState.Modified;
             }
             try

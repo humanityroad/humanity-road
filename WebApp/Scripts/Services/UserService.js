@@ -23,6 +23,7 @@ angular.module('frontEndApp')
         };
 
         self.saveUserDetails = function (userObj) {
+         // debugger;
             $log.log('entered UserService.saveUserDetails');
             $log.log('userObj:', userObj);
 
@@ -43,6 +44,7 @@ angular.module('frontEndApp')
         };
 
         self.createTimesheet = function (o) {
+            //debugger;
             $log.log('entered UserService.createTimesheet');
             $log.log('timesheet object:', o);
 

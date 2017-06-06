@@ -9,16 +9,17 @@
  */
 var app = angular
     .module('frontEndApp', [
-        'ngAnimate',
-        'ngAria',
-        'ngCookies',
-        'ngMessages',
-        'ngResource',
-        'ngRoute',
-        'ngSanitize',
-        'ngTouch',
-        'ngMaterial',
-        'chart.js'
+    'ngMaterial',
+        'ngAnimate'
+        ,'ngAria'
+        ,'ngCookies'
+        ,'ngMessages'
+        ,'ngResource'
+        ,'ngRoute'
+        ,'ngSanitize'
+        ,'ngTouch'           
+        , 'chart.js'
+        , 'ngMaterialDatePicker'
     ]);
 
 
@@ -29,6 +30,7 @@ app.factory('httpRequestInterceptor', function() {
             request: function(config) {
                 config.headers['X-Requested-By'] = 'AngularClient';
                 return config;
+
             }
         };
     });

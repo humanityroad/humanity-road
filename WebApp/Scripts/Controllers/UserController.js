@@ -10,6 +10,7 @@
 angular.module('frontEndApp')
   .controller('UserCtrl', ['$log', 'UserService', '$window', '$mdSidenav', '$location', '$cookies', function ($log, UserService, $window, $mdSidenav, $location, $cookies) {
 
+     // debugger;
       $log.log('entered UserCtrl');
 
       var desiredRoute = $cookies.get('clientStartRoute');
@@ -22,15 +23,26 @@ angular.module('frontEndApp')
       var self = this;
       self.user = {};
       self.timesheet = {};
+      
       self.showSpinner = true;
-
+      //self.user.AgeGroupsList = {  
+      //    "NA": "N/A",
+      //    "KI":"Kids(5-10)",
+      //    "TN": "Teens(11-15)",
+      //    "YA": "Young Adults(16-25)",
+      //    "AD":"Adults(26 and older)"
+      //    };
+      
+      //self.user.AgeGroupsList = ["N/A", "Kids(5-10)", "Teens(11-15)", "Young Adults(16-25)", "Adults(26 and older)"];
+      self.user.AgeGroups = "N/A";
+      self.user.Status = "Active";
       self.timesheet.actions = ["Disaster Response", "Disaster Preparedness", "Tools Testing", "Fund Raising", "Training", "Other"];
       self.timesheet.eventtypes = ["Avalanche", "Disease", "Drought", "Earthquake", "Fire", "Flood", "Hurricane/Cyclone", "Manmade/Hazmat", "Public Safety", "Rockslide/Landslide", "Severe Weather", "Tornado", "Tsunami", "Volcano", "Winter Storm", "Others"];
       self.timesheet.IsActive = "true";
       
       // function declarations
       self.saveUserInfo = function () {
-          debugger;
+        // debugger;
           UserService.saveUserDetails(self.user).then(function (res) {
               self.showSpinner = false;
               $window.location.href = '#/Home';
@@ -83,7 +95,10 @@ angular.module('frontEndApp')
       };
 
       self.saveTimesheet = function (frmLogTime) {
-         // debugger;
+          //debugger;
+          if (frmLogTime.selectLogdate.$viewValue) {
+              self.timesheet.Date = frmLogTime.selectLogdate.$viewValue;
+          }
           UserService.createTimesheet(self.timesheet).then(function () {
         
               self.getTimesheetHistory();
@@ -101,7 +116,7 @@ angular.module('frontEndApp')
      
       self.updateTimeSheet=function(timesheet)
       {
-          //debugger;
+        //  debugger;
           self.upddata = timesheet;
           UserService.updateTimeSheet(self.upddata).then(function (data) {
               $log.log('got timesheet list:', data);
@@ -115,6 +130,7 @@ angular.module('frontEndApp')
      
 
       self.getTimesheetHistory = function () {
+         // debugger;
           UserService.getTimesheets().then(function (data) {
               $log.log('got timesheet list:', data);
               self.timesheetList = data;
@@ -123,11 +139,13 @@ angular.module('frontEndApp')
      
       // run once for initialization
       UserService.getUserDetails().then(function (data) {
-          //debugger;
-          self.user = data;
+       // debugger;
+          self.user = data;            
+          self.user.Status = "Active";
           self.showSpinner = false;
       });
       self.getTimesheetHistory();
 
       $log.log('exiting UserCtrl');
+
   }]);

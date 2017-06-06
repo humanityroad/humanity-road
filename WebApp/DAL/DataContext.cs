@@ -11,6 +11,8 @@ namespace WebApp.DAL
 
         public DbSet<TimeSheet> TimeSheets { get; set; }
 
+        public DbSet<ProfileHistory> ProfileHistory { get; set;}
+
         #region Overrides of DbContext
 
         /// <summary>

@@ -19,6 +19,8 @@ namespace WebApp
         public DateTime? GoogleEarthOrientationDate { get; set; }
         public DateTime? PublishingOrientationDate { get; set; }
         public string TshirtSize { get; set; }
+        public string AgeGroups { get; set; }
+        public string Status { get; set; }
         public bool AcceptConductTerms { get; set; }
     }
 }
