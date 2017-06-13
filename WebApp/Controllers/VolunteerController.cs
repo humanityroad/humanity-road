@@ -46,9 +46,9 @@
             {
                 return BadRequest();
             }
-
+           
             db.Entry(volunteer).State = EntityState.Modified;
-
+            volunteer.Role = "Reader";
             try
             {
                 db.SaveChanges();

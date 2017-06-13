@@ -236,9 +236,14 @@
     <Compile Include="Migrations\201705031814469_updateVolunteercolumnsandHistory.Designer.cs">
       <DependentUpon>201705031814469_updateVolunteercolumnsandHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706131702329_profilehistory.cs" />
+    <Compile Include="Migrations\201706131702329_profilehistory.Designer.cs">
+      <DependentUpon>201706131702329_profilehistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ProfileHistory.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\TimeSheet.cs" />
     <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -11534,6 +11539,7 @@
     <None Include="Properties\PublishProfiles\HumanityRoad - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\HumanityRoad - Web Deploy.pubxml" />
     <Content Include="Views\App\Home.cshtml" />
+    <Content Include="Views\App\ManagementScreen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -11562,6 +11568,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705031814469_updateVolunteercolumnsandHistory.resx">
       <DependentUpon>201705031814469_updateVolunteercolumnsandHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706131702329_profilehistory.resx">
+      <DependentUpon>201706131702329_profilehistory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

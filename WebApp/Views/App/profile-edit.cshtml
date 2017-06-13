@@ -47,13 +47,16 @@
                     <md-option value="TN">Teens(11-15)</md-option>
                     <md-option value="YA">Young Adults(16-25)</md-option>
                     <md-option value="AD">Adults(26 and older)</md-option>
-                </md-select>             
-                
+                </md-select>       
             </md-input-container>
             <md-input-container class="md-block" flex-gt-xs hidden>
                 <label>Status</label>
                 <input ng-model="uCtrl.user.Status" ng-readonly="true" />
             </md-input-container>
+            @*<md-input-container class="md-block" flex-gt-xs hidden>
+                <label>Role</label>
+                <input ng-model="uCtrl.user.Role" ng-readonly="true" />
+            </md-input-container>*@
         </div>
         <p class="md-caption">Birthday</p>
         <div layout-gt-xs="row">

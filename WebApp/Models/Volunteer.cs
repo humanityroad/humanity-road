@@ -21,6 +21,7 @@ namespace WebApp
         public string TshirtSize { get; set; }
         public string AgeGroups { get; set; }
         public string Status { get; set; }
+        public string Role { get; set; }
         public bool AcceptConductTerms { get; set; }
     }
 }
