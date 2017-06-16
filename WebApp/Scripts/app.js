@@ -45,13 +45,14 @@ app.config(httpConfig);
 
 // configure app client routes
 
-var routeConfig = function($routeProvider) {
+var routeConfig = function ($routeProvider) {
+
     $routeProvider
         .when('/Profile/Edit', {
-            templateUrl: 'app/profile-edit'
+            templateUrl: 'app/profile-edit',            
         })
         .when('/Home', {
-            templateUrl: 'app/home'
+            templateUrl: 'app/Home',            
         })
         .otherwise('/Profile/Edit');
 };

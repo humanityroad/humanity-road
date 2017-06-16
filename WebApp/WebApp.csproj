@@ -239,6 +239,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ProfileHistory.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\TimeSheet.cs" />
     <Compile Include="Models\Volunteer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -246,7 +247,7 @@
     <Compile Include="Utilities\IdentityHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
-	<Content Include="bower_components\**\*" />
+    <Content Include="bower_components\**\*" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />

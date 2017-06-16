@@ -46,7 +46,7 @@
             {
                 return BadRequest();
             }
-
+            volunteer.RoleID = "RDR";
             db.Entry(volunteer).State = EntityState.Modified;
 
             try

@@ -36,12 +36,16 @@
         [ActionName("profile-edit")]
         public ActionResult EditProfile()
         {
-            return this.ResolveRouteToIndexIfNeeded() ?? this.View();
+            //return this.ResolveRouteToIndexIfNeeded() ?? this.View();
+            return this.View();
+        
         }
-
+      
+        [ActionName("Home")]
         public ActionResult Home()
         {
-            return this.ResolveRouteToIndexIfNeeded() ?? this.View();
+           // return this.ResolveRouteToIndexIfNeeded() ?? this.View();
+            return this.View();
         }
 
         private ActionResult ResolveRouteToIndexIfNeeded()

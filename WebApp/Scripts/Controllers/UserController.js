@@ -25,27 +25,17 @@ angular.module('frontEndApp')
       self.timesheet = {};
       
       self.showSpinner = true;
-      //self.user.AgeGroupsList = {  
-      //    "NA": "N/A",
-      //    "KI":"Kids(5-10)",
-      //    "TN": "Teens(11-15)",
-      //    "YA": "Young Adults(16-25)",
-      //    "AD":"Adults(26 and older)"
-      //    };
-      
-      //self.user.AgeGroupsList = ["N/A", "Kids(5-10)", "Teens(11-15)", "Young Adults(16-25)", "Adults(26 and older)"];
+    
       self.user.AgeGroups = "N/A";
-      self.user.Status = "Active";
-      self.timesheet.actions = ["Disaster Response", "Disaster Preparedness", "Tools Testing", "Fund Raising", "Training", "Other"];
-      self.timesheet.eventtypes = ["Avalanche", "Disease", "Drought", "Earthquake", "Fire", "Flood", "Hurricane/Cyclone", "Manmade/Hazmat", "Public Safety", "Rockslide/Landslide", "Severe Weather", "Tornado", "Tsunami", "Volcano", "Winter Storm", "Others"];
+      self.user.Status = "Active";   
       self.timesheet.IsActive = "true";
       
       // function declarations
       self.saveUserInfo = function () {
-        // debugger;
+       // debugger;
           UserService.saveUserDetails(self.user).then(function (res) {
               self.showSpinner = false;
-              $window.location.href = '#/Home';
+           //   $window.location.href = '#!/Home';
           });
           self.showSpinner = true;
       }
@@ -53,16 +43,10 @@ angular.module('frontEndApp')
       self.toggleNav = function() {
           $mdSidenav('left').toggle();
       }
-      //self.isChecked = function()
-      //{
-      //    if (self.user.AcceptConductTerms != null)
-      //        return self.user.AcceptConductTerms;
-      //    else
-      //        return false;
-          
-      //}
+   
 
-      self.hrefHandle = function(href) {
+      self.hrefHandle = function (href) {
+         // debugger;
           $mdSidenav('left').close();
           $window.location.href = href;
       }
@@ -106,9 +90,7 @@ angular.module('frontEndApp')
               frmLogTime.$setUntouched();
               frmLogTime.$setPristine();
               self.timesheet = null;
-              self.timesheet = {};
-              self.timesheet.actions = ["Disaster Response", "Disaster Preparedness", "Tools Testing", "Fund Raising", "Training", "Other"];
-              self.timesheet.eventtypes = ["Avalanche", "Disease", "Drought", "Earthquake", "Fire", "Flood", "Hurricane/Cyclone", "Manmade/Hazmat", "Public Safety", "Rockslide/Landslide", "Severe Weather", "Tornado", "Tsunami", "Volcano", "Winter Storm", "Others"];
+              self.timesheet = {};          
               self.timesheet.IsActive = "true";
           });
 

@@ -54,11 +54,19 @@
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-xs>
                     <label>Select Action</label>
-                    <md-select ng-model="uCtrl.timesheet.Action" name="selectActions" ng-required="true">
+                    @*<md-select ng-model="uCtrl.timesheet.Action" name="selectActions" ng-required="true">
                         <md-option ng-repeat="action in uCtrl.timesheet.actions" ng-value="action">
                             {{action}}
                         </md-option>
-                    </md-select>
+                    </md-select>*@
+                    <md-select id="uCtrl.timesheet.Action" name="selectActions" ng-Model="uCtrl.timesheet.Action" ng-required="true">
+                        <md-option value="Disaster Response">Disaster Response</md-option>
+                        <md-option value="Disaster Preparedness">Disaster Preparedness</md-option>
+                        <md-option value="Tools Testing">Tools Testing</md-option>
+                        <md-option value="Fund Raising">Fund Raising</md-option>
+                        <md-option value="Training">Training</md-option>
+                        <md-option value="Other">Other</md-option>
+                    </md-select> 
                     <div ng-messages="frmLogTime.selectActions.$error">
                         <div ng-message="required">Select Action</div>
                     </div>
@@ -69,11 +77,29 @@
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-xs>
                     <label>Select event type</label>
-                    <md-select ng-model="uCtrl.timesheet.EventType" name="selectEventType" ng-required="true">
+                    @*<md-select ng-model="uCtrl.timesheet.EventType" name="selectEventType" ng-required="true">
                         <md-option ng-repeat="eventtype in uCtrl.timesheet.eventtypes" ng-value="eventtype">
                             {{eventtype}}
                         </md-option>
-                    </md-select>
+                    </md-select>*@
+                    <md-select id="ageGroups" name="selectEventType" ng-model="uCtrl.timesheet.EventType" ng-required="true">
+                        <md-option value="Avalanche">Avalanche</md-option>
+                        <md-option value="Disease">Disease</md-option>
+                        <md-option value="Drought">Drought</md-option>
+                        <md-option value="Earthquake">Earthquake</md-option>
+                        <md-option value="Fire">Fire</md-option>
+                        <md-option value="Flood">Flood</md-option>
+                        <md-option value="Hurricane/Cyclone">Hurricane/Cyclone</md-option>
+                        <md-option value="Manmade/Hazmat">Manmade/Hazmat</md-option>
+                        <md-option value="Public Safety">Public Safety</md-option>
+                        <md-option value="Rockslide/Landslide">Rockslide/Landslide</md-option>
+                        <md-option value="Severe Weather">Severe Weather</md-option>
+                        <md-option value="Tornado">Tornado</md-option>
+                        <md-option value="Tsunami">Tsunami</md-option>
+                        <md-option value="Volcano">Volcano</md-option>
+                        <md-option value="Winter Storm">Winter Storm</md-option>
+                        <md-option value="Others">Others</md-option>
+                    </md-select>          
                     <div ng-messages="frmLogTime.selectEventType.$error">
                         <div ng-message="required">Select event type</div>
                     </div>
