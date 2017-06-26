@@ -2,3 +2,5 @@
 packages
 *.user
 WebApp/App_Data/
+/WebApp/obj/Debug
+/WebApp/bin
