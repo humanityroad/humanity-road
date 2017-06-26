@@ -20,12 +20,14 @@ namespace WebApp.Migrations
             
             AddColumn("dbo.Volunteer", "AgeGroups", c => c.String());
             AddColumn("dbo.Volunteer", "Status", c => c.String());
+            AddColumn("dbo.Volunteer", "RoleID", c => c.String());
         }
         
         public override void Down()
         {
             DropColumn("dbo.Volunteer", "Status");
             DropColumn("dbo.Volunteer", "AgeGroups");
+            DropColumn("dbo.Volunteer", "RoleID");
             DropTable("dbo.ProfileHistory");
         }
     }
