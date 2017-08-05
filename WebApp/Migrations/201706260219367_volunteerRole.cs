@@ -7,12 +7,17 @@ namespace WebApp.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Volunteer", "RoleID", c => c.String());
-        }
+            AddColumn("dbo.Roles", "RoleID", c => c.String());
+            AddColumn("dbo.Roles", "RoleDesc", c => c.String());
+            AddColumn("dbo.Roles", "RoleClassification", c => c.String());       
+
+    }
         
         public override void Down()
         {
-            DropColumn("dbo.Volunteer", "RoleID");
-        }
+           DropColumn("dbo.Roles", "RoleID");
+           DropColumn("dbo.Roles", "RoleDesc");
+           DropColumn("dbo.Roles", "RoleClassification");
+    }
     }
 }

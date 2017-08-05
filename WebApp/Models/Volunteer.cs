@@ -22,6 +22,7 @@ namespace WebApp
         public string AgeGroups { get; set; }
         public string Status { get; set; }
         public string RoleID { get; set; }      
-        public bool AcceptConductTerms { get; set; }
+        public bool AcceptConductTerms { get; set; } 
+        public DateTime? DateofJoin { get; set; }
     }
 }

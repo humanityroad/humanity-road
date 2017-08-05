@@ -238,6 +238,10 @@
     <Compile Include="Migrations\201706260219367_volunteerRole.Designer.cs">
       <DependentUpon>201706260219367_volunteerRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708052203201_DateofJoin.cs" />
+    <Compile Include="Migrations\201708052203201_DateofJoin.Designer.cs">
+      <DependentUpon>201708052203201_DateofJoin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ProfileHistory.cs" />
@@ -317,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706260219367_volunteerRole.resx">
       <DependentUpon>201706260219367_volunteerRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708052203201_DateofJoin.resx">
+      <DependentUpon>201708052203201_DateofJoin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
